@@ -315,7 +315,7 @@ cation3.grid(column=6, row=1)
 go_button = Button(window, text='Рассчитать', font=32, command=define_brutto)
 go_button.grid(column=4, row=3, columnspan=3, rowspan=3)
 window.mainloop()
-
+print('end of the programm')
 
 
 
