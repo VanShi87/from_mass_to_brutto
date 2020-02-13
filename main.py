@@ -54,106 +54,29 @@ def define_brutto():
         threshold = float(threshold_entry.get().replace(',', '.'))
     cation = list_of_cations[cation_var.get()]
     molecular_mass_rest = [molecular_mass + threshold - exact_mass[cation], ]
-    if C_var.get():
-        atom_list.append('C')
-        try:
-            Nmin['C'] = int(C_min.get())
-        except:
-            Nmin['C'] = 0
-        try:
-            Nmax['C'] = int(C_max.get())
-        except:
-            Nmax['C'] = None
-    if N_var.get():
-        atom_list.append('N')
-        try:
-            Nmin['N'] = int(N_min.get())
-        except:
-            Nmin['N'] = 0
-        try:
-            Nmax['N'] = int(N_max.get())
-        except:
-            Nmax['N'] = None
-    if O_var.get():
-        atom_list.append('O')
-        try:
-            Nmin['O'] = int(O_min.get())
-        except:
-            Nmin['O'] = 0
-        try:
-            Nmax['O'] = int(O_max.get())
-        except:
-            Nmax['O'] = 0
-    if S_var.get():
-        atom_list.append('S')
-        try:
-            Nmin['S'] = int(S_min.get())
-        except:
-            Nmin['S'] = 0
-        try:
-            Nmax['S'] = int(S_max.get())
-        except:
-            Nmax['S'] = None
-    if P_var.get():
-        atom_list.append('P')
-        try:
-            Nmin['P'] = int(P_min.get())
-        except:
-            Nmin['P'] = 0
-        try:
-            Nmax['P'] = int(P_max.get())
-        except:
-            Nmax['P'] = None
-    if F_var.get():
-        atom_list.append('F')
-        try:
-            Nmin['F'] = int(F_min.get())
-        except:
-            Nmin['F'] = 0
-        try:
-            Nmax['F'] = int(F_max.get())
-        except:
-            Nmax['F'] = None
-    if Cl_var.get():
-        atom_list.append('Cl')
-        try:
-            Nmin['Cl'] = int(Cl_min.get())
-        except:
-            Nmin['Cl'] = 0
-        try:
-            Nmax['Cl'] = int(Cl_max.get())
-        except:
-            Nmax['Cl'] = None
-    if Br_var.get():
-        atom_list.append('Br')
-        try:
-            Nmin['Br'] = int(Br_min.get())
-        except:
-            Nmin['Br'] = 0
-        try:
-            Nmax['Br'] = int(Br_max.get())
-        except:
-            Nmax['Br'] = None
-    if I_var.get():
-        atom_list.append('I')
-        try:
-            Nmin['I'] = int(I_min.get())
-        except:
-            Nmin['I'] = 0
-        try:
-            Nmax['I'] = int(I_max.get())
-        except:
-            Nmax['I'] = None
-    if H_var.get():
-        atom_list.append('H')
-        try:
-            Nmin['H'] = int(H_min.get())
-        except:
-            Nmin['H'] = 0
-        try:
-            Nmax['H'] = int(H_max.get())
-        except:
-            Nmax['H'] = None
+    element_list = [('C', C_var, C_min, C_max),
+                 ('N', N_var, N_min, N_max),
+                 ('O', O_var, O_min, O_max),
+                 ('S', S_var, S_min, S_max),
+                 ('P', P_var, P_min, P_max),
+                 ('F', F_var, F_min, F_max),
+                 ('Cl', Cl_var, Cl_min, Cl_max),
+                 ('Br', Br_var, Br_min, Br_max),
+                 ('I', I_var, I_min, I_max),
+                 ('H', H_var, H_min, H_max),
+                ]
+
+    for element, element_var, element_min, element_max in element_list:
+        if element_var.get():
+            atom_list.append(element)
+            try:
+                Nmin[element] = int(element_min.get())
+            except:
+                Nmin[element] = 0
+            try:
+                Nmax[element] = int(element_max.get())
+            except:
+                Nmax[element] = None
 
     last_atom = atom_list.pop()
 
